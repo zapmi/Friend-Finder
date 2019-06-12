@@ -1,3 +1,20 @@
+var friendsData = require('../data/friends');
+
+module.exports = function(app){
+  
+    app.get('/api/friends', function (req, res){
+        res.json(friendsData);
+    });
+
+    $.post("/api/friends", newCharacter)
+    .then(function (data) {
+        console.log(data);
+        alert("Adding character...");
+    });
+
+}
+
+
 // // Displays a single character, or returns false
 // app.get("/api/friends", function (req, res) {
 //     var chosen = req.params.character;
@@ -33,11 +50,3 @@
 
 
 
-var friendsData = require('../data/friends');
-
-module.exports = function(app){
-  
-    app.get('/api/friends', function (req, res){
-        res.json(friendsData);
-    });
-}

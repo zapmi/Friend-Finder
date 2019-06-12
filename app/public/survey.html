@@ -39,7 +39,8 @@
 
                             <h4>Question 1</h4>
                             <p>Your mind is always buzzing with unexplored ideas and plans.</p>
-                            <select name="question1">
+                            <select name="question1" class="formQuestions" id="q1">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="one">1 (Strongly Disagree)</option>
                                 <option value="two">2</option>
                                 <option value="three">3</option>
@@ -50,7 +51,8 @@
                             <br>
                             <h4>Question 2</h4>
                             <p>Generally speaking, you rely more on your experience than your imagination.</p>
-                            <select name="question2">
+                            <select name="question2" class="formQuestions" id="q2">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="one">1 (Strongly Disagree)</option>
                                 <option value="two">2</option>
                                 <option value="three">3</option>
@@ -61,7 +63,8 @@
                             <br>
                             <h4>Question 3</h4>
                             <p>You find it easy to stay relaxed and focused even when there is some pressure.</p>
-                            <select name="question3">
+                            <select name="question3" class="formQuestions" id="q3">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="one">1 (Strongly Disagree)</option>
                                 <option value="two">2</option>
                                 <option value="three">3</option>
@@ -72,7 +75,8 @@
                             <br>
                             <h4>Question 4</h4>
                             <p>You rarely do something just out of sheer curiosity.</p>
-                            <select name="question4">
+                            <select name="question4" class="formQuestions" id="q4">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="one">1 (Strongly Disagree)</option>
                                 <option value="two">2</option>
                                 <option value="three">3</option>
@@ -83,7 +87,8 @@
                             <br>
                             <h4>Question 5</h4>
                             <p>People can rarely upset you.</p>
-                            <select name="question5">
+                            <select name="question5" class="formQuestions" id="q5">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="one">1 (Strongly Disagree)</option>
                                 <option value="two">2</option>
                                 <option value="three">3</option>
@@ -94,7 +99,8 @@
                             <br>
                             <h4>Question 6</h4>
                             <p>It is often difficult for you to relate to other people’s feelings.</p>
-                            <select name="question6">
+                            <select name="question6" class="formQuestions" id="q6">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="one">1 (Strongly Disagree)</option>
                                 <option value="two">2</option>
                                 <option value="three">3</option>
@@ -105,7 +111,8 @@
                             <br>
                             <h4>Question 7</h4>
                             <p>In a discussion, truth should be more important than people’s sensitivities.</p>
-                            <select name="question7">
+                            <select name="question7" class="formQuestions" id="q7">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="one">1 (Strongly Disagree)</option>
                                 <option value="two">2</option>
                                 <option value="three">3</option>
@@ -116,7 +123,8 @@
                             <br>
                             <h4>Question 8</h4>
                             <p>You rarely get carried away by fantasies and ideas.</p>
-                            <select name="question1">
+                            <select name="question8" class="formQuestions" id="q8">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="one">1 (Strongly Disagree)</option>
                                 <option value="two">2</option>
                                 <option value="three">3</option>
@@ -128,7 +136,8 @@
                             <h4>Question 9</h4>
                             <p>You think that everyone’s views should be respected regardless of whether they are
                                 supported by facts or not.</p>
-                            <select name="question1">
+                            <select name="question9" class="formQuestions" id="q9">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="one">1 (Strongly Disagree)</option>
                                 <option value="two">2</option>
                                 <option value="three">3</option>
@@ -139,7 +148,8 @@
                             <br>
                             <h4>Question 10</h4>
                             <p>You feel more energetic after spending time with a group of people.</p>
-                            <select name="question1">
+                            <select name="question10" class="formQuestions" id="q10">
+                                <option disabled selected value> -- select an option -- </option>
                                 <option value="one">1 (Strongly Disagree)</option>
                                 <option value="two">2</option>
                                 <option value="three">3</option>
@@ -162,23 +172,44 @@
             </div>
         </div>
     </div>
+    <footer class="footer">
+        <div class="container">
+            <p>
+                <a href="/api/friends">API Friends List</a> |
+                <a href="https://github.com/zapmi/Friend-Finder">GitHub Repo</a>
+            </p>
+        </div>
+    </footer>
+
+
 
     <script type="text/javascript">
-        // Question: What does this code do?
-        $("#add-btn").on("click", function (event) {
+        $("#submit-btn").on("click", function (event) {
             event.preventDefault();
 
-            var newCharacter = {
-                name: $("#name").val().trim(),
-               
-            };
 
-            // Question: What does this code do??
-            $.post("/api/friends", newCharacter)
-                .then(function (data) {
-                    console.log(data);
-                    alert("Adding character...");
+            function formValidation() {
+                var validForm = true;
+                $('.form-control').each(function () {
+                    if ($(this).val() === "") {
+                        validForm = false;
+                    }
                 });
+
+                $('.formQuestions').each(function () {
+                    if ($(this).val() === "") {
+                        validForm = false;
+                    }
+                });
+
+                return validForm;
+
+
+            }
+
+
+
+
 
         });
 
