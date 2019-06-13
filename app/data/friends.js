@@ -4,15 +4,15 @@ var friends = [
         "name": "Ahmed", "photo": "http://beta.ems.ladbiblegroup.com/s3/content/e7d3b5075b19b7019d35a538fe2c89c7.jpg",
         "scores":
             [
-                "5",
                 "1",
-                "4",
-                "4",
-                "5",
                 "1",
-                "2",
-                "5",
-                "4",
+                "1",
+                "1",
+                "1",
+                "1",
+                "1",
+                "1",
+                "1",
                 "1"
             ]
     },
