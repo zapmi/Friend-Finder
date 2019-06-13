@@ -6,11 +6,11 @@ module.exports = function(app){
         res.json(friendsData);
     });
 
-    $.post("/api/friends", newCharacter)
-    .then(function (data) {
-        console.log(data);
-        alert("Adding character...");
-    });
+    // $.post("/api/friends", newCharacter)
+    // .then(function (data) {
+    //     console.log(data);
+    //     alert("Adding character...");
+    // });
 
 }
 

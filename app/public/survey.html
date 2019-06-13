@@ -161,7 +161,8 @@
                         </form>
                         <br>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary btn-md" id="submit-btn">
+                            <button type="submit" data-target="matchModal" class="btn btn-primary btn-md"
+                                id="submit-btn">
                                 <span class="fa fa-check"></span> Submit</button>
                         </div>
                         <br>
@@ -171,6 +172,17 @@
 
             </div>
         </div>
+        <div id="matchModal" class="modal">
+            <div class="modal-content">
+                <h3>BEST MATCH</h3>
+                <h5 id="matchName"></h5>
+                <img id="matchPic" src="" alt=":D" width=200px>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
     <footer class="footer">
         <div class="container">
@@ -184,33 +196,79 @@
 
 
     <script type="text/javascript">
-        $("#submit-btn").on("click", function (event) {
-            event.preventDefault();
+        $(document).ready(function () {
+            $("#submit-btn").on("click", function (event) {
+                event.preventDefault();
 
 
-            function formValidation() {
-                var validForm = true;
-                $('.form-control').each(function () {
-                    if ($(this).val() === "") {
-                        validForm = false;
-                    }
-                });
+                function formValidation() {
+                    var validForm = true;
+                    $('.form-control').each(function () {
+                        if ($(this).val() === "") {
+                            validForm = false;
+                        }
+                    });
 
-                $('.formQuestions').each(function () {
-                    if ($(this).val() === "") {
-                        validForm = false;
-                    }
-                });
+                    $('.formQuestions').each(function () {
+                        if ($(this).val() === "") {
+                            validForm = false;
+                        }
+                    });
 
-                return validForm;
-
-
-            }
+                    return validForm;
 
 
+                }
+
+                if (formValidation() == true) {
+                    var newFriend = {
+                        name: $('#name').val().trim(),
+                        profilePhoto: $('#photo').val().trim(),
+                        score: [
+                            $('q1').val(),
+                            $('q2').val(),
+                            $('q3').val(),
+                            $('q4').val(),
+                            $('q5').val(),
+                            $('q6').val(),
+                            $('q7').val(),
+                            $('q8').val(),
+                            $('q9').val(),
+                            $('q10').val(),
+
+                        ]
+
+                    };
 
 
+                    var currentLocation = window.location.href;
+                    $.post(currentLocation + "api/friends", newFriend, function (data) {
+                        $('#matchName').text(data.name);
+                        $('#matchPic').attr("src", data.profilePhoto);
 
+                    });
+
+                    $('.modal').modal();
+
+                    $('#name').val("");
+                    $('#photo').val("");
+                    $('#q1').val("");
+                    $('#q2').val("");
+                    $('#q3').val("");
+                    $('#q4').val("");
+                    $('#q5').val("");
+                    $('#q6').val("");
+                    $('#q7').val("");
+                    $('#q8').val("");
+                    $('#q9').val("");
+                    $('#q10').val("");
+
+                } else {
+                    alert("Please fill out all fields")
+                }
+
+
+            });
         });
 
     </script>
