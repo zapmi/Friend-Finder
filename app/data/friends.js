@@ -1,7 +1,7 @@
 var friends = [
 
     {
-        "name": "Ahmed", "photo": "https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAq7AAAAJDAwYzI4NTQ4LWYwZWUtNGFkYS1hNTYwLTZjYzkwY2ViZDA3OA.jpg",
+        "name": "Ahmed", "photo": "http://beta.ems.ladbiblegroup.com/s3/content/e7d3b5075b19b7019d35a538fe2c89c7.jpg",
         "scores":
             [
                 "5",
@@ -17,7 +17,7 @@ var friends = [
             ]
     },
     {
-        "name": "Jacob Deming", "photo": "https://pbs.twimg.com/profile_images/691785039043022849/oWsy8LNR.jpg",
+        "name": "Jacob Deming", "photo": "http://beta.ems.ladbiblegroup.com/s3/content/e7d3b5075b19b7019d35a538fe2c89c7.jpg",
         "scores":
             [
                 "4",
@@ -33,7 +33,7 @@ var friends = [
             ]
     },
     {
-        "name": "Jeremiah Scanlon", "photo": "https://avatars2.githubusercontent.com/u/8504998?v=3&s=460",
+        "name": "Jeremiah Scanlon", "photo": "http://beta.ems.ladbiblegroup.com/s3/content/e7d3b5075b19b7019d35a538fe2c89c7.jpg",
         "scores":
             [
                 "5",
@@ -49,7 +49,7 @@ var friends = [
             ]
     },
     {
-        "name": "Louis T. Delia", "photo": "https://pbs.twimg.com/profile_images/639214960049000449/lNCRC-ub.jpg",
+        "name": "Louis T. Delia", "photo": "http://beta.ems.ladbiblegroup.com/s3/content/e7d3b5075b19b7019d35a538fe2c89c7.jpg",
         "scores":
             [
                 "3",
@@ -65,7 +65,7 @@ var friends = [
             ]
     },
     {
-        "name": "Lou Ritter", "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAkDAAAAJDhhZTI5NTk2LWQzZjUtNDJjZi1hMTM2LTQ3ZjNmYjE0YmY2NA.jpg",
+        "name": "Lou Ritter", "photo": "http://beta.ems.ladbiblegroup.com/s3/content/e7d3b5075b19b7019d35a538fe2c89c7.jpg",
         "scores":
             [
                 "4",
@@ -81,7 +81,7 @@ var friends = [
             ]
     },
     {
-        "name": "Jordan Biason", "photo": "https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAisAAAAJGUxYzc4YzA0LWQxMzUtNGI4NS04YTFiLTkwYzM0YTZkNzA2NA.jpg",
+        "name": "Jordan Biason", "photo": "http://beta.ems.ladbiblegroup.com/s3/content/e7d3b5075b19b7019d35a538fe2c89c7.jpg",
         "scores":
             [
                 "4",

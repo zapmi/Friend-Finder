@@ -1,52 +1,69 @@
-var friendsData = require('../data/friends');
+var friends = require('../data/friends');
+var express = require("express");
+var bodyParser = require("body-parser");
 
-module.exports = function(app){
-  
-    app.get('/api/friends', function (req, res){
-        res.json(friendsData);
+module.exports = function (app) {
+
+    app.get('/api/friends', function (req, res) {
+        res.json(friends);
     });
 
-    // $.post("/api/friends", newCharacter)
-    // .then(function (data) {
-    //     console.log(data);
-    //     alert("Adding character...");
-    // });
+    app.post("/api/friends", function (req, res) {
+        // var newcharacter = req.body;
+        // console.log(newcharacter);
+        var bestMatch = {
+            name: "",
+            photo: "",
+            difference: 1000
 
+        };
+        var totalDiff = 0;
+
+        var userData = req.body;
+        console.log(userData);
+
+        var userScores = userData.scores;
+        console.log(userScores);
+        var userName = userData.name;
+        console.log(userName);
+        var userPicture = userData.photo;
+        console.log(userPicture);
+
+var stringScore = userScores.map(function(item) {
+    return parseInt(item, 10);
+});
+
+userData = {
+    "name": req.body.name,
+    "photo": req.body.photo,
+    "score": stringScore
 }
 
+var sum = stringScore.reduce((a,b) => a +b, 0);
 
-// // Displays a single character, or returns false
-// app.get("/api/friends", function (req, res) {
-//     var chosen = req.params.character;
+        for (var i = 0; i < friends.length; i++) {
+            console.log(friends[i].name);
+            totalDiff = 0;
 
-//     console.log(chosen);
+            var friendsScore = friends[i].scores.reduce((a,b) => a +b, 0);
+            totalDiff += Math.abs(sum - friendsScore);
 
-//     for (var i = 0; i < friends.length; i++) {
-//         if (chosen === friends[i].routeName) {
-//             return res.json(friends[i]);
-//         }
-//     }
+                if (totalDiff <= bestMatch.difference) {
 
-//     return res.json(false);
-// });
-
-
-// // Create New Characters - takes in JSON input
-// app.post("/api/friends", function (req, res) {
-//     // req.body hosts is equal to the JSON post sent from the user
-//     // This works because of our body parsing middleware
-//     var newcharacter = req.body;
-
-//     // Using a RegEx Pattern to remove spaces from newCharacter
-//     // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-//     newcharacter.routeName = newcharacter.name.replace(/\s+/g, "").toLowerCase();
-
-//     console.log(newcharacter);
-
-//     friends.push(newcharacter);
-
-//     res.json(newcharacter);
-// });
+                    bestMatch.name = friends[i].name;
+                    bestMatch.photo = friends[i].photo;
+                    bestMatch.difference = totalDiff;
+                }
+            
+        }
 
 
+        friends.push(userData);
+
+        res.json(bestMatch);
+
+
+    });
+
+};
 
