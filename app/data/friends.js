@@ -1,7 +1,7 @@
 var friends = [
 
     {
-        "name": "Ahmed", "photo": "http://beta.ems.ladbiblegroup.com/s3/content/e7d3b5075b19b7019d35a538fe2c89c7.jpg",
+        "name": "Loki", "photo": "http://beta.ems.ladbiblegroup.com/s3/content/e7d3b5075b19b7019d35a538fe2c89c7.jpg",
         "scores":
             [
                 "1",
