@@ -13,13 +13,15 @@ module.exports = function (app) {
         const scoresArray = [];
         let bestMatch = 0;
 
+
         for (var i = 0; i < friends.length; i++) {
             var scoreDiff = 0;
             for (var j = 0; j < userScore.length; j++) {
-                scoreDiff += (Math.abs(parseInt(friends[i].scores[j]) - parseInt(userScore)))
+                scoreDiff += parseInt((Math.abs(friends[i].scores[j]) - userScore));
             }
             scoresArray.push(scoreDiff);
         }
+
 
         for (var i = 0; i < scoresArray.length; i++) {
             if (scoresArray[i] <= scoresArray[bestMatch]) {
@@ -29,7 +31,7 @@ module.exports = function (app) {
 
         let pairedUser = friends[bestMatch];
         res.json(pairedUser);
-        friends.push(req.body)
+        friends.push(req.body);
 
 
     });

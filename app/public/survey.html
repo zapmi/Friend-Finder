@@ -220,29 +220,10 @@
             $("#submit-btn").on("click", function (event) {
                 event.preventDefault();
 
-
-                // function formValidation() {
-                //     var validForm = true;
-                //     $('.form-control').each(function () {
-                //         if ($(this).val() === "") {
-                //             validForm = false;
-                //         }
-                //     });
-
-                //     $('.formQuestions').each(function () {
-                //         if ($(this).val() === "") {
-                //             validForm = false;
-                //         }
-                //     });
-
-                //     return validForm;
-
-
-                // }
                 var valid = true;
-                if ($("#name").val() === "" || $("#photo").val() === "") {
-                    valid = false;
-                } else if ($("#q1").val() === "empty" || $("#q2").val() === "empty" || $("#q3").val() === "empty" || $("#q4").val() === "empty" || $("#q5").val() === "empty" || $("#q6").val() === "empty" || $("#q7").val() === "empty" || $("#q8").val() === "empty" || $("#q9").val() === "empty" || $("#q10").val() === "empty") {
+                if ($("#name").val() === "" || $("#photo").val() === "" || ($("#q1").val() == null || $("#q2").val() === null || $("#q3").val() === null || $("#q4").val() === null || $("#q5").val() === null || $("#q6").val() === null || $("#q7").val() === null || $("#q8").val() === null || $("#q9").val() === null || $("#q10").val() === null)) {
+                    console.log($("#q1").val());
+                    console.log($("#q2").val());
                     valid = false;
                 }
 
