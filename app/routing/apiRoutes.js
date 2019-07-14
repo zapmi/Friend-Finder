@@ -1,4 +1,4 @@
-var friends = require('../data/friends');
+var friends = require('../data/friends.js');
 var express = require("express");
 var bodyParser = require("body-parser");
 
@@ -9,29 +9,40 @@ module.exports = function (app) {
     });
 
     app.post("/api/friends", function (req, res) {
-        let userScore = req.body.scores;
-        const scoresArray = [];
-        let bestMatch = 0;
+        var newFriend = {
+            name: req.body.name,
+            photo: req.body.photo,
+            scores: []
+        };
+        var scoresArray = [];
+        for(var i=0; i < req.body.scores.length; i++){
+            scoresArray.push( parseInt(req.body.scores[i]) )
+          }
+          newFriend.scores = scoresArray;
+        // var userScore = req.body.scores;
+        
+        // var bestMatch = 0;
 
-
+        var scoreComparision = [];
         for (var i = 0; i < friends.length; i++) {
             var scoreDiff = 0;
-            for (var j = 0; j < userScore.length; j++) {
-                scoreDiff += parseInt((Math.abs(friends[i].scores[j]) - userScore));
+            for (var j = 0; j < newFriend.scores.length; j++) {
+                scoreDiff += (Math.abs(parseInt(friends[i].scores[j]) - parseInt(newFriend.scores[j])));
             }
-            scoresArray.push(scoreDiff);
+            scoreComparision.push(scoreDiff);
+
+        }
+        let pairedUser = 0;
+        for (var i = 1; i < scoreComparision.length; i++) {
+            if (scoreComparision[i] <= scoreComparision[pairedUser]) {
+                pairedUser = i;
+            }
         }
 
 
-        for (var i = 0; i < scoresArray.length; i++) {
-            if (scoresArray[i] <= scoresArray[bestMatch]) {
-                bestMatch = i;
-            }
-        }
-
-        let pairedUser = friends[bestMatch];
-        res.json(pairedUser);
-        friends.push(req.body);
+        let bestFriendMatch = friends[pairedUser];
+        res.json(bestFriendMatch);
+        friends.push(newFriend);
 
 
     });
