@@ -10,7 +10,7 @@ module.exports = function (app) {
 
     app.post("/api/friends", function (req, res) {
         let userScore = req.body.scores;
-        const scoresArray = [];
+        let scoresArray = [];
         let bestMatch = 0;
 
 
